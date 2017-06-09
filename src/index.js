@@ -71,7 +71,8 @@ assoc.prototype.filterWithKey = function(f) {
 };
 
 assoc.prototype.find = function(f) {
-  return this.v.find(pair => f(pair[1]));
+  var i = this.v.find(pair => f(pair[1]));
+  return i ? i[1] : null;
 };
 
 assoc.prototype.findWithKey = function(f) {
