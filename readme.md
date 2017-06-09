@@ -1,4 +1,4 @@
-# assoclist.js
+# assoclist.js [![Build Status](https://travis-ci.org/diasbruno/assoclist.js.svg?branch=master)](https://travis-ci.org/diasbruno/assoclist.js)
 
 Basic implementation of lisp's assoc list or haskell's `Data.Map.Map`.
 
