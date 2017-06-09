@@ -1,3 +1,4 @@
+.version
 node_modules/*
 *.patch
 *.diff
