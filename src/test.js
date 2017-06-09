@@ -82,7 +82,7 @@ describe("assoclist.js", () => {
 
     it("#find", () => {
       assoc([[1, 1], [2, 2]]).find(
-        v => v > 1
+        item => item[0] > 1
       ).should.be.eql(2);
     });
 
