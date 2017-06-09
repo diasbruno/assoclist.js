@@ -3,6 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+function findWithKey(f, ls) {
+  return ls.find(function (item) {
+    return f(item[0]);
+  });
+}
+
 function assoc(pairs) {
   if (!(this instanceof assoc)) {
     return new assoc(pairs);
@@ -32,9 +38,9 @@ assoc.prototype.isEmpty = function () {
 };
 
 assoc.prototype.set = function (key, value) {
-  var s = this.findWithKey(function (k, v) {
+  var s = findWithKey(function (k, v) {
     return k == key;
-  });
+  }, this.v);
   s && this.update(key, function () {
     return value;
   });
@@ -43,9 +49,9 @@ assoc.prototype.set = function (key, value) {
 };
 
 assoc.prototype.get = function (key) {
-  var s = this.findWithKey(function (k, v) {
+  var s = findWithKey(function (k, v) {
     return k == key;
-  });
+  }, this.v);
   return s ? s[1] : null;
 };
 
@@ -94,12 +100,6 @@ assoc.prototype.find = function (f) {
     return f(pair[1]);
   });
   return i ? i[1] : null;
-};
-
-assoc.prototype.findWithKey = function (f) {
-  return this.v.find(function (pair) {
-    return f.apply(null, pair);
-  });
 };
 
 assoc.prototype.update = function (key, f) {
