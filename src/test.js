@@ -86,12 +86,6 @@ describe("assoclist.js", () => {
       ).should.be.eql(2);
     });
 
-    it("#findWithKey", () => {
-      assoc([['a', 1], ['b', 2]]).findWithKey(
-        (k, v) => k > 'a'
-      ).should.be.eql(['b', 2]);
-    });
-
     it("#update", () => {
       assoc([['a', 1], ['b', 2]]).update(
         'a',

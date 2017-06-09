@@ -1,3 +1,7 @@
+function findWithKey(f, ls) {
+  return ls.find(item => f(item[0]));
+}
+
 function assoc(pairs) {
   if (!(this instanceof assoc)) {
     return new assoc(pairs);
@@ -23,14 +27,14 @@ assoc.prototype.isEmpty = function() {
 };
 
 assoc.prototype.set = function(key, value) {
-  var s = this.findWithKey((k, v) => k == key);
+  var s = findWithKey((k, v) => k == key, this.v);
   s && this.update(key, () => value);
   !s && this.v.push([key, value]);
   return this;
 };
 
 assoc.prototype.get = function(key) {
-  var s = this.findWithKey((k, v) => k == key);
+  var s = findWithKey((k, v) => k == key, this.v);
   return s ? s[1] : null;
 };
 
@@ -73,10 +77,6 @@ assoc.prototype.filterWithKey = function(f) {
 assoc.prototype.find = function(f) {
   var i = this.v.find(pair => f(pair[1]));
   return i ? i[1] : null;
-};
-
-assoc.prototype.findWithKey = function(f) {
-  return this.v.find(pair => f.apply(null, pair));
 };
 
 assoc.prototype.update = function(key, f) {
