@@ -2,6 +2,7 @@ NODE=$(shell which node)
 NPM=$(shell which npm)
 YARN=$(shell which yarn)
 JQ=$(shell which jq)
+BABEL=./node_modules/babel-cli/bin/babel.js
 
 VERSION=$(shell jq ".version" package.json)
 
@@ -21,7 +22,7 @@ tests:
 	@npm run test
 
 assoclist.js: src/index.js
-	babel $< > $@
+	$(BABEL) $< -o $@
 
 build: assoclist.js
 
