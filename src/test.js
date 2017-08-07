@@ -99,5 +99,11 @@ describe("assoclist.js", () => {
         (k, v) => (v + 1) * k
       ).should.be.eql(assoc([[1, 1], [2, 6]]));
     });
+
+    it("#sort", () => {
+      assoc([[1, 3], [3, 2], [2, 1]]).sort(
+        (a, b) => a - b
+      ).values().should.be.eql([1, 2, 3]);
+    });
   });
 });
