@@ -97,4 +97,10 @@ assoc.prototype.updateWithKey = function(key, f) {
   }));
 };
 
+assoc.prototype.sort = function(f) {
+  return assoc(
+    this.v.sort((a, b) => f(a[1], b[1]))
+  );
+};
+
 export default assoc;
